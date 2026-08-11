@@ -1,0 +1,33 @@
+name: Temporary feedback lifecycle sizing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/temporary-feedback-match-lifecycle.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.event.head_commit.message != 'chore: remove temporary feedback lifecycle workflow'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Match feedback callout to lifecycle scale
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          s = s.replace('padding:16px 22px;text-align:center;border:1px solid rgba(82,214,197,.55)', 'padding:14px 20px;text-align:center;border:1px solid rgba(82,214,197,.55)')
+          s = s.replace('font:700 12px var(--mono);letter-spacing:.1em;margin-bottom:6px', 'font:600 11px var(--mono);letter-spacing:.1em;margin-bottom:5px')
+          s = s.replace('font-size:clamp(12px,1.4vw,16px);font-weight:500;line-height:1.5', 'font-size:12px;font-weight:500;line-height:1.5')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'style: match feedback callout to lifecycle scale'
+          git push
