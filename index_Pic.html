@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Abhishek Pandit — Senior Avionics &amp; Embedded Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons for high-fidelity UI icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg-base: #030712;
+      --bg-surface: rgba(15, 23, 42, 0.72);
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --border-subtle: rgba(56, 189, 248, 0.16);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.18);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 100% 30%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 0% 70%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Glass Panel Utility */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    /* ---------------- Navbar ---------------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    nav .nav-wrap {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    /* ---------------- Hero Section ---------------- */
+    .hero {
+      padding: 130px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4.2vw, 54px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .domain-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .domain-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #030712;
+      border: 1px solid var(--cyan);
+    }
+
+    .btn-primary:hover {
+      background: #7dd3fc;
+      border-color: #7dd3fc;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 8px;
+      font-family: var(--font-mono);
+    }
+
+    /* Jet Engine Graphic Column */
+    .hero-visual {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(14, 165, 233, 0.15);
+      aspect-ratio: 4 / 3.4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .engine-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.15) brightness(0.9);
+    }
+
+    .fadec-overlay {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(3, 7, 18, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 12px 16px;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .fadec-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+    }
+
+    .fadec-subtitle {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin: 2px 0 4px;
+    }
+
+    .fadec-tags {
+      font-size: 10px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    /* ---------------- Section Common ---------------- */
+    section {
+      padding: 42px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title i {
+      color: var(--cyan);
+      width: 20px;
+      height: 20px;
+    }
+
+    .view-all-link {
+      font-size: 12px;
+      color: var(--cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+
+    .view-all-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------- Mid Section: About & Projects ---------------- */
+    .mid-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    /* About Me Card */
+    .about-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-photo {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+      object-fit: cover;
+      margin-bottom: 18px;
+    }
+
+    .about-bio {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .contact-details {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--border-light);
+      padding-top: 16px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-row i {
+      color: var(--cyan);
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    .contact-row a:hover {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
+
+    /* Featured Projects 2x2 Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .project-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-icon {
+      color: var(--cyan);
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-light);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* ---------------- Technical Skills 5-Card Row ---------------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .skill-card {
+      padding: 18px 16px;
+      background: var(--bg-card);
+    }
+
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .skill-card-header i {
+      color: var(--cyan);
+      width: 17px;
+      height: 17px;
+    }
+
+    .skill-category-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-list li {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skill-list li::before {
+      content: '•';
+      color: var(--cyan);
+      font-size: 14px;
+    }
+
+    /* ---------------- Lower Section: Experience & Credentials ---------------- */
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 24px;
+    }
+
+    /* Professional Experience Left Column */
+    .experience-card {
+      padding: 24px;
+    }
+
+    .job-block {
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+
+    .job-block:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .job-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .job-meta {
+      flex: 1;
+    }
+
+    .company-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .job-role {
+      font-size: 13px;
+      color: var(--cyan);
+      font-weight: 500;
+      margin: 2px 0;
+    }
+
+    .job-dates {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .badge-c2 {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--cyan);
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .badge-billable {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .job-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .job-bullets li {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .job-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 14px;
+    }
+
+    /* Right Column: Standards & Languages */
+    .right-stacked {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cert-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cert-table tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .cert-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .cert-table td {
+      padding: 10px 0;
+      font-size: 12.5px;
+    }
+
+    .cert-code {
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cert-code i {
+      width: 15px;
+      height: 15px;
+      color: var(--text-dim);
+    }
+
+    .cert-desc {
+      color: var(--text-muted);
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .lang-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .lang-pill:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    /* ---------------- Quote Banner ---------------- */
+    .quote-banner {
+      margin: 40px 0 20px;
+      padding: 38px 20px;
+      text-align: center;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.95) 100%);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.01em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-icon {
+      margin-top: 10px;
+      color: var(--cyan);
+      width: 20px;
+      height: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------------- Footer ---------------- */
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 24px 0;
+      background: rgba(3, 7, 18, 0.95);
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .footer-role {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--cyan);
+    }
+
+    .footer-link i {
+      width: 15px;
+      height: 15px;
+    }
+
+    .back-to-top {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .back-to-top:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* ---------------- Responsive Styles ---------------- */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual {
+        max-width: 600px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 9;
+      }
+      .mid-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .lower-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .languages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <nav>
+    <div class="container nav-wrap">
+      <div class="brand">
+        <span class="brand-name">Abhishek Pandit</span>
+        <span class="brand-title">Senior Avionics &amp; Embedded Software Engineer</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">7+ YEARS OF EXPERIENCE</div>
+        <h1>Senior Avionics &amp;<br><span>Embedded Software Engineer</span></h1>
+        <p class="hero-desc">Building reliable, safety-critical systems for Aerospace, with expertise in Avionics, Embedded Systems and Industrial Automation.</p>
+        
+        <div class="domain-badges">
+          <span class="domain-pill"><i data-lucide="plane"></i> Avionics</span>
+          <span class="domain-pill"><i data-lucide="cpu"></i> Embedded</span>
+          <span class="domain-pill"><i data-lucide="cog"></i> Industrial Automation</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="Abhishek_Pandit_Senior_Avionics_Embedded_Software_Engineer.pdf" class="btn btn-primary" download>
+            <i data-lucide="download"></i> Download Resume
+          </a>
+          <a href="https://linkedin.com/in/abhishek-pandit-2a377a126" target="_blank" rel="noopener" class="btn btn-outline">
+            <i data-lucide="linkedin"></i> LinkedIn
+          </a>
+          <a href="mailto:abhishekpandit28@gmail.com" class="btn btn-outline">
+            <i data-lucide="mail"></i> Email
+          </a>
+        </div>
+        <div class="cta-note">(Updated 2026)</div>
+      </div>
+
+      <!-- Right Turbine Hero Image -->
+      <div class="hero-visual">
+        <!-- High-res turbine visual with cool blue illumination -->
+        <img class="engine-img" src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=80" alt="Aerospace Jet Engine Turbine with Blue Afterburner Glow">
+        
+        <div class="fadec-overlay">
+          <div class="fadec-title">FADEC</div>
+          <div class="fadec-subtitle">Fuel · Air · Electronic · Control</div>
+          <div class="fadec-tags">Safe · Efficient · Reliable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid Section: About Me + Featured Projects -->
+  <section id="about">
+    <div class="container mid-grid">
+      <!-- About Me Card -->
+      <div class="glass-card about-card">
+        <div class="section-title" style="margin-bottom: 16px;">About Me</div>
+        <img class="profile-photo" src="https://avatars.githubusercontent.com/u/48590680?v=4" alt="Abhishek Pandit photo">
+        <p class="about-bio">
+          I am a Senior Avionics &amp; Embedded Software Engineer with 7+ years of experience in developing and validating safety-critical software for aerospace and industrial applications. I have worked on FADEC systems, engine control, and embedded platforms, with strong expertise in DO-178C, MC/DC, and V&amp;V processes.
+        </p>
+        <div class="contact-details">
+          <div class="contact-row">
+            <i data-lucide="map-pin"></i>
+            <span>Bangalore, India</span>
+          </div>
+          <div class="contact-row">
+            <i data-lucide="mail"></i>
+            <a href="mailto:abhishekpandit28@gmail.com">abhishek.pandit95@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <i data-lucide="linkedin"></i>
+            <a href="https://linkedin.com/in/abhishek-pandit-2a377a126" target="_blank" rel="noopener">linkedin.com/in/abhishek-pandit-2a377a126/</a>
+          </div>
+          <div class="contact-row">
+            <i data-lucide="github"></i>
+            <a href="https://github.com/abhijarvis" target="_blank" rel="noopener">github.com/abhijarvis</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Projects (2x2 Grid) -->
+      <div id="projects">
+        <div class="section-header">
+          <div class="section-title">
+            <i data-lucide="folder-git-2"></i> Featured Projects
+          </div>
+          <a href="https://github.com/abhijarvis" target="_blank" rel="noopener" class="view-all-link">
+            View All →
+          </a>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="glass-card project-card">
+            <div class="project-header">
+              <i data-lucide="plane" class="project-icon"></i>
+              <div class="project-title">FADEC / Engine Control Software</div>
+            </div>
+            <p class="project-desc">Developed and validated embedded control software for FADEC systems with DO-178C compliance and MC/DC coverage.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">C</span>
+              <span class="tech-tag">DO-178C</span>
+              <span class="tech-tag">MC/DC</span>
+              <span class="tech-tag">VectorCAST</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="glass-card project-card">
+            <div class="project-header">
+              <i data-lucide="cpu" class="project-icon"></i>
+              <div class="project-title">Industrial Automation / IoT Gateway</div>
+            </div>
+            <p class="project-desc">Designed embedded gateway for industrial automation using STM32, CAN, MQTT and AWS IoT for real-time data processing.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">STM32</span>
+              <span class="tech-tag">CAN</span>
+              <span class="tech-tag">MQTT</span>
+              <span class="tech-tag">AWS IoT</span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="glass-card project-card">
+            <div class="project-header">
+              <i data-lucide="home" class="project-icon"></i>
+              <div class="project-title">Raspberry Pi Home Automation</div>
+            </div>
+            <p class="project-desc">Built a self-hosted platform with Docker, Pi-hole, Grafana, Prometheus, Nextcloud and Tailscale for remote access.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Grafana</span>
+              <span class="tech-tag">Prometheus</span>
+              <span class="tech-tag">Tailscale</span>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="glass-card project-card">
+            <div class="project-header">
+              <i data-lucide="code" class="project-icon"></i>
+              <div class="project-title">Embedded Safety-Critical Software</div>
+            </div>
+            <p class="project-desc">Implemented embedded modules with requirements, unit testing, static analysis and regression testing.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">C/C++</span>
+              <span class="tech-tag">Polyspace</span>
+              <span class="tech-tag">VectorCAST</span>
+              <span class="tech-tag">Jira</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills (5-Column Matrix) -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <i data-lucide="settings"></i> Technical Skills
+        </div>
+        <a href="#expertise" class="view-all-link">View All Skills →</a>
+      </div>
+
+      <div class="skills-grid">
+        <!-- 1. Avionics -->
+        <div class="glass-card skill-card">
+          <div class="skill-card-header">
+            <i data-lucide="plane"></i>
+            <span class="skill-category-title">Avionics &amp; Safety</span>
+          </div>
+          <ul class="skill-list">
+            <li>FADEC</li>
+            <li>DO-178C</li>
+            <li>EN 50128</li>
+            <li>ASIL B/C</li>
+            <li>MC/DC</li>
+            <li>RTOS</li>
+          </ul>
+        </div>
+
+        <!-- 2. Embedded Systems -->
+        <div class="glass-card skill-card">
+          <div class="skill-card-header">
+            <i data-lucide="cpu"></i>
+            <span class="skill-category-title">Embedded Systems</span>
+          </div>
+          <ul class="skill-list">
+            <li>C/C++</li>
+            <li>STM32</li>
+            <li>ESP32</li>
+            <li>Arduino</li>
+            <li>UART · SPI · I2C</li>
+            <li>CAN · FreeRTOS</li>
+          </ul>
+        </div>
+
+        <!-- 3. Verification & Tools -->
+        <div class="glass-card skill-card">
+          <div class="skill-card-header">
+            <i data-lucide="check-circle-2"></i>
+            <span class="skill-category-title">Verification &amp; Tools</span>
+          </div>
+          <ul class="skill-list">
+            <li>Simulink</li>
+            <li>Polyspace</li>
+            <li>VectorCAST</li>
+            <li>IBM DOORS</li>
+            <li>Git · GDB</li>
+            <li>Jira · Docker</li>
+          </ul>
+        </div>
+
+        <!-- 4. Industrial Automation -->
+        <div class="glass-card skill-card">
+          <div class="skill-card-header">
+            <i data-lucide="cog"></i>
+            <span class="skill-category-title">Industrial Auto</span>
+          </div>
+          <ul class="skill-list">
+            <li>PLC</li>
+            <li>SCADA</li>
+            <li>OPC UA</li>
+            <li>Modbus</li>
+            <li>Industrial IoT</li>
+            <li>AWS IoT · MQTT</li>
+          </ul>
+        </div>
+
+        <!-- 5. IoT & Cloud -->
+        <div class="glass-card skill-card">
+          <div class="skill-card-header">
+            <i data-lucide="cloud"></i>
+            <span class="skill-category-title">IoT &amp; Cloud</span>
+          </div>
+          <ul class="skill-list">
+            <li>Raspberry Pi</li>
+            <li>AWS IoT</li>
+            <li>Ubidots</li>
+            <li>Blynk · IFTTT</li>
+            <li>Docker</li>
+            <li>Tailscale</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lower Section: Professional Experience + Standards & Languages -->
+  <section id="experience">
+    <div class="container lower-grid">
+      <!-- Left: Professional Experience -->
+      <div class="glass-card experience-card">
+        <div class="section-title" style="margin-bottom: 22px;">
+          <i data-lucide="briefcase"></i> Professional Experience
+        </div>
+
+        <!-- Job 1 -->
+        <div class="job-block">
+          <div class="job-top">
+            <div class="company-logo" style="color: #38bdf8;">tcs</div>
+            <div class="job-meta">
+              <div class="company-name">Tata Consultancy Services</div>
+              <div class="job-role">Senior Designer — Engine Control Systems</div>
+              <div class="job-dates">Mar 2024 – Present (1 yr 11 mo) · Bangalore</div>
+            </div>
+            <div class="badge-group">
+              <span class="badge-c2">C2</span>
+              <span class="badge-billable">Billable</span>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Developed and maintained embedded software for engine control systems (FADEC).</li>
+            <li>Worked on DO-178C compliant development with MC/DC test coverage.</li>
+            <li>Created and executed unit, integration and system tests using VectorCAST and Polyspace.</li>
+            <li>Collaborated with cross-functional teams for CI/CD, defect tracking and release management.</li>
+          </ul>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="job-block">
+          <div class="job-top">
+            <div class="company-logo"><i data-lucide="building-2"></i></div>
+            <div class="job-meta">
+              <div class="company-name">Previous Company</div>
+              <div class="job-role">Embedded / IoT Engineer</div>
+              <div class="job-dates">2018 – 2024 · Bangalore</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Developed embedded firmware for IoT and industrial automation products.</li>
+            <li>Worked with STM32/ESP32, sensors, MQTT, AWS IoT and cloud platforms.</li>
+            <li>Involved in requirement analysis, debugging, and customer support.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column: Certifications & Languages -->
+      <div class="right-stacked">
+        <!-- Certifications & Standards Card -->
+        <div class="glass-card" style="padding: 22px;">
+          <div class="section-title" style="margin-bottom: 16px;">
+            <i data-lucide="shield-check"></i> Certifications &amp; Standards
+          </div>
+          <table class="cert-table">
+            <tbody>
+              <tr>
+                <td class="cert-code"><i data-lucide="badge-check"></i> DO-178C</td>
+                <td class="cert-desc">Avionics Software Development</td>
+              </tr>
+              <tr>
+                <td class="cert-code"><i data-lucide="badge-check"></i> EN 50128</td>
+                <td class="cert-desc">Railway Safety (SIL 4)</td>
+              </tr>
+              <tr>
+                <td class="cert-code"><i data-lucide="badge-check"></i> MC/DC</td>
+                <td class="cert-desc">Code Coverage</td>
+              </tr>
+              <tr>
+                <td class="cert-code"><i data-lucide="badge-check"></i> ASIL B/C</td>
+                <td class="cert-desc">Automotive Functional Safety</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Languages & Frameworks Card -->
+        <div class="glass-card" style="padding: 22px;">
+          <div class="section-title" style="margin-bottom: 16px;">
+            <i data-lucide="code-2"></i> Languages &amp; Frameworks
+          </div>
+          <div class="languages-grid">
+            <div class="lang-pill">C/C++</div>
+            <div class="lang-pill">Python</div>
+            <div class="lang-pill">Simulink</div>
+            <div class="lang-pill">Bash</div>
+            <div class="lang-pill">Docker</div>
+            <div class="lang-pill">Git</div>
+            <div class="lang-pill">Jira</div>
+            <div class="lang-pill">Linux</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Banner -->
+  <div class="container">
+    <div class="quote-banner">
+      <div class="quote-text">"Reliable software today. Safer skies tomorrow."</div>
+      <div style="display: flex; justify-content: center;">
+        <i data-lucide="plane" class="quote-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container footer-wrap">
+      <div class="footer-left">
+        <span class="footer-name">Abhishek Pandit</span>
+        <span class="footer-role">Senior Avionics &amp; Embedded Software Engineer</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/abhishek-pandit-2a377a126" target="_blank" rel="noopener" class="footer-link">
+          <i data-lucide="linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/abhijarvis" target="_blank" rel="noopener" class="footer-link">
+          <i data-lucide="github"></i> GitHub
+        </a>
+        <a href="mailto:abhishekpandit28@gmail.com" class="footer-link">
+          <i data-lucide="mail"></i> Email
+        </a>
+        <a href="#home" class="back-to-top" title="Back to top">
+          <i data-lucide="arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+
+    // Scroll-Spy for Top Nav Highlight
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (window.scrollY >= top) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
